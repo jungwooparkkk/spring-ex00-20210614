@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -130,6 +131,30 @@ public class SampleController {
 		header.add("Content-Type", "application/json;charset=UTF-8");
 		
 		return new ResponseEntity<>(msg, header, HttpStatus.OK);
+	}
+	
+	// 148쪽
+	@GetMapping("/ex7")
+	public ResponseEntity<String> ex0(){
+		log.info("/ex07.......");
+		
+		//{"name":"홍길동"}
+		String msg = "{\"name\":\"홍길동\"}";
+		
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Type", "application/json;charset=UTF-8");
+		
+		return new ResponseEntity<>(msg, header, HttpStatus.OK);
+	}
+	
+	
+	//140쪽
+	@GetMapping("/ex04")
+	public String ex04(SampleDTO dto, @ModelAttribute("page") int page) {
+		log.info("dto : " + dto);
+		log.info("page : " + page);
+		
+		return "/sample/ex04";
 	}
 }
 
