@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -34,7 +35,7 @@ public class BoardMapperTests {
 //		assertEquals(5, list.size());
 		assertTrue(list.size() > 0);
 	}
-
+	
 	@Test
 	public void testInsert() {
 		BoardVO board = new BoardVO();
@@ -46,7 +47,7 @@ public class BoardMapperTests {
 		
 		assertEquals(1, cnt);
 	}
-	
+
 	@Test
 	public void testInsertSelectKey() {
 		BoardVO board = new BoardVO();
@@ -80,14 +81,14 @@ public class BoardMapperTests {
 		long key = board.getBno();
 		
 		BoardVO newBoard = mapper.read(key);
-	
+		
 		assertNotNull(newBoard);
 		assertEquals(key, newBoard.getBno());
 	}
 	
 	@Test
 	public void testDelete() {
-		int cnt = mapper.delete(0);
+		int cnt = mapper.delete(0); // bno 가 0인 레코드 삭제
 		
 		assertEquals(0, cnt);
 		
@@ -107,7 +108,7 @@ public class BoardMapperTests {
 	
 	@Test
 	public void testUpdate() {
-		long bno = 5;
+		long bno = 1;
 		
 		BoardVO board = new BoardVO();
 		board.setBno(bno);
@@ -124,11 +125,16 @@ public class BoardMapperTests {
 		assertEquals(board.getContent(), board5.getContent());
 		assertEquals(board.getWriter(), board5.getWriter());
 	}
+	
+	
+	@Test
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		List<BoardVO> list = mapper.getListWithPaging(cri);
+		
+		assertEquals(10, list.size());
+	}
 }
-
-
-
-
 
 
 
