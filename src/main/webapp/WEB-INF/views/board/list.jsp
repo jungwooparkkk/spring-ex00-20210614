@@ -61,6 +61,9 @@ $(document).ready(function() {
 					
 					<a href="${getUrl }">
 						${board.title }
+						<c:if test="${board.replyCnt >0 }">
+							[${board.replyCnt }]
+						</c:if>
 					</a>
 					
 					</td>

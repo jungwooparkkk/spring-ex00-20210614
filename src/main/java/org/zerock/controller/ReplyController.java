@@ -55,6 +55,7 @@ public class ReplyController {
 		return service.get(rno);
 	}
 	
+//	@RequestMapping(value = "/{rno}", method = RequestMethod.DELETE)
 	@DeleteMapping("/{rno}")
 	public ResponseEntity<String> remove(@PathVariable Long rno){
 		
@@ -68,7 +69,7 @@ public class ReplyController {
 	}
 	
 	@RequestMapping(value="/{rno}", method = {RequestMethod.PUT, RequestMethod.PATCH})
-	public ResponseEntity<String> modift(@RequestBody ReplyVO vo, @PathVariable Long rno){
+	public ResponseEntity<String> modify(@RequestBody ReplyVO vo, @PathVariable Long rno){
 		int cnt = service.modify(vo);
 		
 		if(cnt == 1) {
