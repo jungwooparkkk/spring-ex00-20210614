@@ -94,6 +94,13 @@ public class ReplyMapperTasts {
 		
 	}
 	
+	@Test
+	public void testDeleteByBno() {
+		Long bno = 108L;
+		
+		mapper.deleteByBno(bno);
+	}
+	
 }
 
 
