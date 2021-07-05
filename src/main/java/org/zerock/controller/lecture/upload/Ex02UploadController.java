@@ -14,10 +14,10 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 @Controller
 @RequestMapping("/uploadex02")
 @Log4j
-public class Ex02UploadController throws Exception {
+public class Ex02UploadController {
 	
 	@RequestMapping("sub01")
-	public void method01(MultipartFile file) {
+	public void method01(MultipartFile file) throws Exception {
 		log.info(file.getOriginalFilename());
 		
 		
