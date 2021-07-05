@@ -2,7 +2,6 @@ package org.zerock.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -80,11 +79,12 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
+	public String modify(BoardVO board, Criteria cri,
+			@RequestParam("file") MultipartFile file, RedirectAttributes rttr) {
 		// request parameter 수집
 		
 		// service 일 시킴
-		boolean success = service.modify(board);
+		boolean success = service.modify(board, file);
 		
 		// 결과를 모델(또는 FlashMap)에 넣고
 		if(success) {
