@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="container">
-	<form action="${appRoot }/uploadex02/sub01" metho="post" enctype="multipart/form-data">
+	<form action="${appRoot }/uploadex02/sub01" method="post" enctype="multipart/form-data">
 		<input type="file" name="file" accept="image/*" /> <br>
 		<input type="submit">
 	</form>
