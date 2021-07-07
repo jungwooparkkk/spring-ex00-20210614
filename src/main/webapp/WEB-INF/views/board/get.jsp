@@ -8,7 +8,6 @@
 <html>
 <head>
 
-
 <%@ include file="/WEB-INF/subModules/bootstrapHeader.jsp" %>
 
 <title>Insert title here</title>
