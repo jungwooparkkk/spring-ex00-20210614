@@ -2,6 +2,7 @@ package org.zerock.controller;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/register")
+	@PreAuthorize("isAuthenticated()")
 	public String register(BoardVO board, 
 			@RequestParam("file") MultipartFile file , RedirectAttributes rttr) {
 		
@@ -79,6 +81,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
+	@PreAuthorize("isAuthenticated()")
 	public String modify(BoardVO board, Criteria cri,
 			@RequestParam("file") MultipartFile file, RedirectAttributes rttr) {
 		// request parameter 수집
@@ -103,6 +106,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/remove")
+	@PreAuthorize("isAuthenticated()")
 	public String remove(@RequestParam("bno") Long bno,  
 			Criteria cri, RedirectAttributes rttr) {
 		// parameter 수집
@@ -125,6 +129,7 @@ public class BoardController {
 		
 	}
 	@GetMapping("/register")
+	@PreAuthorize("isAuthenticated()") // 673쪽 
 	public void register(@ModelAttribute("cri") Criteria cri) {
 		// forward /WEB-INF/views/board/register.jsp
 	}
