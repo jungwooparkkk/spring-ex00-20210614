@@ -11,6 +11,24 @@
 				$("#reply-replyer-input2").val(reply.replyer);
 				$("#reply-reply-textarea2").text(reply.reply);
 				$("#reply-modify-modal").modal("show");
+                
+                // 댓글 작성자와 로그인 유저가 같지 않으면 
+				// 수정/삭제 버튼 삭제
+				if (userid != reply.replyer) {
+					$("#reply-modify-modal")
+					  .find("#reply-modify-delete-btn-wrapper")
+					  .hide();	
+					
+					$("#reply-reply-textarea2").attr("readonly", "readonly");
+				} else {
+					$("#reply-modify-modal")
+					  .find("#reply-modify-delete-btn-wrapper")
+					  .show();	
+					
+					$("#reply-reply-textarea2").removeAttr("readonly");
+				}
+
+				$("#reply-modify-modal").modal("show");
 			},
 			error: function () {
 				console.log("댓글 가져오기 실패");
